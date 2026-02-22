@@ -30,7 +30,6 @@ fun ListIngItemScreen(user: User) {
     }
 }
 
-
 @Preview
 @Composable
 fun ListIngItemScreenPreview() {

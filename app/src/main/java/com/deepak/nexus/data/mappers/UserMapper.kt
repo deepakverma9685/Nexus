@@ -9,7 +9,6 @@ import com.deepak.nexus.domain.models.Company
 import com.deepak.nexus.domain.models.Geo
 import com.deepak.nexus.domain.models.User
 
-
 fun UserDto.toDomain(): User {
     return User(
         id = this.id ?: 0,

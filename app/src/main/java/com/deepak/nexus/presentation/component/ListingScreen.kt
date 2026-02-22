@@ -25,7 +25,6 @@ fun ListingScreen(usersList: List<User>) {
     }
 }
 
-
 @Preview
 @Composable
 fun ListingScreenPreview() {
