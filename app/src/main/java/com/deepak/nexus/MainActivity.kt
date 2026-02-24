@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.deepak.nexus.presentation.theme.MyApplicationTheme
 import com.deepak.nexus.presentation.ui.MainScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,7 +21,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyApplicationTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MainScreen(modifier = Modifier.padding(innerPadding))
+                    MainScreen(modifier = Modifier.padding(innerPadding), mainScreenViewModel = hiltViewModel())
                 }
             }
         }
