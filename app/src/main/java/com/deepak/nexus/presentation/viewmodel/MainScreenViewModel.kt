@@ -10,6 +10,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import com.deepak.nexus.core.coreNetwork.Result
+import com.deepak.nexus.presentation.state.LoginUiState
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 
 @HiltViewModel
 class MainScreenViewModel @Inject constructor(val getUsersUseCase: GetUsersUseCase) : ViewModel() {
@@ -17,12 +20,17 @@ class MainScreenViewModel @Inject constructor(val getUsersUseCase: GetUsersUseCa
     private val _state: MutableStateFlow<UsersState> = MutableStateFlow(UsersState.Loading)
     val state: StateFlow<UsersState> = _state
 
+    private val _uiState = MutableStateFlow(LoginUiState())
+    val uiState = _uiState.asStateFlow()
+
     init {
         getUsers()
     }
 
     private fun getUsers() {
         viewModelScope.launch {
+
+            _uiState.update { it.copy(email = "") }
             getUsersUseCase().collect { response ->
                 when (response) {
                     is Result.Success -> {

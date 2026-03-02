@@ -1,6 +1,6 @@
 package com.deepak.nexus.domain.models
 
-// handle nullability at the API/mapping layer, not in UI.
+// handle nullability at the API/mapping layer, not in UI as best practices.
 // Do Not create variables like this val name: String? = null
 
 

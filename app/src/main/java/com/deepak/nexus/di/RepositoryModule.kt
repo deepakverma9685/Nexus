@@ -20,9 +20,11 @@ abstract class RepositoryModule {
 
 /*
 * @Binds (Recommended Best Practice)
-When to use: Use @Binds when you need to provide an implementation of an interface, and the implementation's constructor can be directly injected by Hilt (i.e., it has an @Inject annotated constructor).
+When to use: Use @Binds when you need to provide an implementation of an interface, and the implementation's constructor
+* can be directly injected by Hilt (i.e., it has an @Inject annotated constructor).
 Why it's better:
-Efficiency: @Binds is more efficient than @Provides because it tells Dagger Hilt directly how to map an interface to an implementation without needing to instantiate the implementation and return it. This results in less generated code and better performance.
+Efficiency: @Binds is more efficient than @Provides because it tells Dagger Hilt directly how to map an interface to an implementation
+* without needing to instantiate the implementation and return it. This results in less generated code and better performance.
 Readability: It clearly expresses the intent of binding an interface to a concrete type.
 Implementation: Requires an abstract class module and an abstract fun method.
 *
