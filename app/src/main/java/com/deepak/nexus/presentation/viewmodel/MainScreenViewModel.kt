@@ -30,7 +30,6 @@ class MainScreenViewModel @Inject constructor(val getUsersUseCase: GetUsersUseCa
     private fun getUsers() {
         viewModelScope.launch {
 
-            _uiState.update { it.copy(email = "") }
             getUsersUseCase().collect { response ->
                 when (response) {
                     is Result.Success -> {
