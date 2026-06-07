@@ -1,5 +1,6 @@
 package com.deepak.nexus.data.repository
 
+import android.util.Log
 import com.deepak.nexus.core.coreNetwork.ApiResult
 import com.deepak.nexus.core.coreNetwork.Result
 import com.deepak.nexus.core.coreNetwork.safeApiCall
@@ -22,7 +23,8 @@ class UserRepositoryImpl @Inject constructor(
 
         when (val apiResult = safeApiCall { apiService.getUsers() }) {
             is ApiResult.Success -> {
-                val users = apiResult.data.map { it.toDomain() }
+                val users = apiResult.data.map { it.toDomain() }.filter { it.website == "ambrose.net" }.take(2).sortedBy { it.name }
+                Log.e("TAG", "getUsers:---- ${users.size}", )
                 emit(Result.Success(users))
             }
 
